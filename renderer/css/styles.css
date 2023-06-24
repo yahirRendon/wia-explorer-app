@@ -1,0 +1,90 @@
+/* 
+    Plum: HEX= #ac015f | RGB= 172 1 95
+red: HEX= #9b1f2e | RGB: 155 31 46
+darkred: HEX= #6b1f31 | RBG: 107 31 49
+
+light gree: HEX: #ecf0da | RGB 236 240 218
+*/
+
+:root {
+    --plum-color: rgb(172, 1, 95);
+    --red-color: rgb(155, 31, 46);
+    --dark-red-color: rgb(107, 31, 49);
+    --light-green-color: rgb(236, 240, 218);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.drag {
+    -webkit-app-region: drag;
+}
+
+.no-drag {
+    -webkit-app-region: no-drag;
+}
+
+.hide {
+    display: none;
+}
+
+/* menu / title bar */
+/* settings for menu items that have icons */
+.icon-img {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    background-color: rgb(236 240 218);
+}
+.icon-img:hover {
+    cursor: pointer;
+}
+.icon-img div {
+    width: 50%;
+    height: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* menu elements */
+.nav-files {grid-area: navFiles; background-color: white;}
+.nav-stats {grid-area: navStats;}
+.nav-settings {grid-area: navSettings;}
+.nav-reload{grid-area: navReload;}
+.nav-min {grid-area: navMin;}
+.nav-close {grid-area: navClose;}
+
+/* set the individual icons for each menu element 
+since i am not using svg path i have to update the svg files on hover
+if I am able to get the path i believe i can update using fill*/
+.nav-files div {background-image: url('../images/icons/folder.svg'); transition: background-image 500ms;}
+.nav-files:hover div {background-image: url('../images/icons/folder-plum.svg'); transition: background-image 500ms;}
+
+.nav-stats div {background-image: url('../images/icons/bar-chart-2.svg'); transition: background-image 500ms;}
+.nav-stats:hover div {background-image: url('../images/icons/bar-chart-2-plum.svg'); transition: background-image 500ms;}
+
+.nav-settings div {background-image: url('../images/icons/settings.svg'); transition: background-image 500ms;}
+.nav-settings:hover div {background-image: url('../images/icons/settings-plum.svg'); transition: background-image 500ms;}
+
+.nav-reload div {background-image: url('../images/icons/refresh-cw.svg'); transition: background-image 500ms;}
+.nav-reload:hover div {background-image: url('../images/icons/refresh-cw-plum.svg'); transition: background-image 500ms;}
+
+.nav-min div {background-image: url('../images/icons/minus.svg'); transition: background-image 500ms;}
+.nav-min:hover div {background-image: url('../images/icons/minus-plum.svg'); transition: background-image 500ms;}
+
+.nav-close div {background-image: url('../images/icons/x.svg'); transition: background-image 500ms;}
+.nav-close:hover div {background-image: url('../images/icons/x-plum.svg');transition: background-image 500ms;}
+
+/* organize menu within wrapper */
+.nav-wrapper {
+    grid-area: navwrapper;
+    display: grid;
+    grid-template-columns: 50px 50px 50px 1fr 50px 50px 50px;
+    grid-template-rows: 50px;
+    grid-template-areas: "navFiles navStats navSettings navDrag navReload navMin navClose";
+    position: sticky;
+    top: 0;  
+}
