@@ -212,7 +212,6 @@ if I am able to get the path i believe i can update using fill*/
   text-align: center;
   font-size: .75em;
   grid-column: 2 / 3;
-
 }
 
 /* larger padding on top to match h1 
@@ -237,7 +236,7 @@ if I am able to get the path i believe i can update using fill*/
 
 .main-p-link {
   text-decoration: none;
-  color: var(--highlight);
+  color: var(--plum-color);
 }
 
 .main-p-link:hover {
@@ -415,7 +414,7 @@ if I am able to get the path i believe i can update using fill*/
 
 /******************************************************************************
  * 
- * footer section
+ * footer elements
  * 
  *****************************************************************************/
 .client-count-total {
@@ -462,3 +461,30 @@ if I am able to get the path i believe i can update using fill*/
   align-items: center;
   padding: 0 10px;
 }
+
+/******************************************************************************
+ * 
+ * guide elements
+ * 
+ *****************************************************************************/
+ .guide-a {
+  grid-area: guideA;
+  text-align: right;
+  padding-right: .25em;
+  font-style: italic;
+ }
+ .guide-b {
+  grid-area: guideB;
+  text-align: left;
+  padding-left: .25em;
+  border-left: 1px solid var(--plum-color);
+
+ }
+ .guide-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 120px 400px 1fr;
+  grid-template-areas: ". guideA guideB .";
+  /* border: 1px solid red; */
+  font-size: small;
+  padding: .5em;
+ }
