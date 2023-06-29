@@ -1,28 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> -->
     <link rel="stylesheet" href="../css/styles.css" />
-    <script src="../js/renderer.js" defer></script>
+    <script src="../js/settings.js" defer></script>
     <title>settings</title>
 </head>
-<body>
+
+<body id="settings-page">
+
     <!-- nave / menu / title bar for app -->
-    <nav class="nav-wrapper"> 
-        <div class="nav-files icon-img no-drag"><div></div></div>
-        <div class="nav-stats icon-img no-drag"><div></div></div>
-        <div class="nav-settings icon-img no-drag"><div></div></div>
+    <nav class="nav-wrapper">
+        <div class="nav-files icon-img no-drag">
+            <div></div>
+        </div>
+        <div class="nav-stats icon-img no-drag">
+            <div></div>
+        </div>
+        <div class="nav-settings icon-img no-drag">
+            <div></div>
+        </div>
         <div class="nav-drag icon-img drag"></div>
-        <div class="nav-reload icon-img no-drag"><div></div></div>
-        <div class="nav-min icon-img no-drag"><div></div></div>
-        <div class="nav-close icon-img no-drag"><div></div></div>
+        <div class="nav-min icon-img no-drag">
+            <div></div>
+        </div>
+        <div class="nav-close icon-img no-drag">
+            <div></div>
+        </div>
     </nav>
-    
-    <div>settings page</div>
+
+    <!-- display / update path to client folder -->
+    <div class="container-main">
+        <div class="main-spacer"></div>
+    </div>
+    <div class="container-main">
+        <div class="main-h3-top">client folder path:</div>
+    </div>
+    <div class="container-main-wide">
+        <div id="path-drop" class="main-p-even-small">path</div>
+    </div>
+
+    <div class="container-main">
+        <div class="main-spacer"></div>
+    </div>
+    <div class="container-main">
+        <div class="main-line"></div>
+    </div>
+    <div class="container-main">
+        <div class="main-spacer"></div>
+    </div>
+
+    <!-- display how to use app info -->
+    <div class="container-main">
+        <div class="main-h3-top">Guide/Shortcuts</div>
+    </div>
+    <div class="container-main-wide">
+        <div class="main-p-even-small">coming soon...</div>
+    </div>
+
 </body>
+
 </html>

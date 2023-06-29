@@ -1,90 +1,464 @@
-/* 
-    Plum: HEX= #ac015f | RGB= 172 1 95
-red: HEX= #9b1f2e | RGB: 155 31 46
-darkred: HEX= #6b1f31 | RBG: 107 31 49
-
-light gree: HEX: #ecf0da | RGB 236 240 218
-*/
+/******************************************************************************
+ * color palette
+ * plum color:    HEX= #ac015f | RGB= 172 1 95
+ * red color:     HEX= #9b1f2e | RGB: 155 31 46
+ * dark red:      HEX= #6b1f31 | RBG: 107 31 49
+ * light grn clr: HEX: #ecf0da | RGB 236 240 218
+ *
+*****************************************************************************/
 
 :root {
-    --plum-color: rgb(172, 1, 95);
-    --red-color: rgb(155, 31, 46);
-    --dark-red-color: rgb(107, 31, 49);
-    --light-green-color: rgb(236, 240, 218);
+  --plum-color: rgb(172, 1, 95);
+  --red-color: rgb(155, 31, 46);
+  --dark-red-color: rgb(107, 31, 49);
+  --light-green-color: rgb(236, 240, 218);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .drag {
-    -webkit-app-region: drag;
+  -webkit-app-region: drag;
 }
 
 .no-drag {
-    -webkit-app-region: no-drag;
+  -webkit-app-region: no-drag;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 /* menu / title bar */
 /* settings for menu items that have icons */
 .icon-img {
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    background-color: rgb(236 240 218);
-}
-.icon-img:hover {
-    cursor: pointer;
-}
-.icon-img div {
-    width: 50%;
-    height: 50%;
-    background-repeat: no-repeat;
-    background-size: contain;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background-color: var(--light-green-color);
 }
 
-/* menu elements */
-.nav-files {grid-area: navFiles; background-color: white;}
-.nav-stats {grid-area: navStats;}
-.nav-settings {grid-area: navSettings;}
-.nav-reload{grid-area: navReload;}
-.nav-min {grid-area: navMin;}
-.nav-close {grid-area: navClose;}
+.icon-img:hover {
+  cursor: pointer;
+}
+
+.icon-img div {
+  width: 50%;
+  height: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+/******************************************************************************
+ * 
+ * menu/navigation bar elements
+ * 
+ *****************************************************************************/
+.nav-files {
+  grid-area: navFiles;
+}
+
+.nav-stats {
+  grid-area: navStats;
+}
+
+.nav-settings {
+  grid-area: navSettings;
+}
+
+.nav-min {
+  grid-area: navMin;
+}
+
+.nav-close {
+  grid-area: navClose;
+}
 
 /* set the individual icons for each menu element 
 since i am not using svg path i have to update the svg files on hover
 if I am able to get the path i believe i can update using fill*/
-.nav-files div {background-image: url('../images/icons/folder.svg'); transition: background-image 500ms;}
-.nav-files:hover div {background-image: url('../images/icons/folder-plum.svg'); transition: background-image 500ms;}
+.nav-files div {
+  background-image: url('../images/icons/folder.svg');
+  transition: background-image 500ms;
+}
 
-.nav-stats div {background-image: url('../images/icons/bar-chart-2.svg'); transition: background-image 500ms;}
-.nav-stats:hover div {background-image: url('../images/icons/bar-chart-2-plum.svg'); transition: background-image 500ms;}
+.nav-files:hover div {
+  background-image: url('../images/icons/folder-plum.svg');
+  transition: background-image 500ms;
+}
 
-.nav-settings div {background-image: url('../images/icons/settings.svg'); transition: background-image 500ms;}
-.nav-settings:hover div {background-image: url('../images/icons/settings-plum.svg'); transition: background-image 500ms;}
+.nav-stats div {
+  background-image: url('../images/icons/bar-chart-2.svg');
+  transition: background-image 500ms;
+}
 
-.nav-reload div {background-image: url('../images/icons/refresh-cw.svg'); transition: background-image 500ms;}
-.nav-reload:hover div {background-image: url('../images/icons/refresh-cw-plum.svg'); transition: background-image 500ms;}
+.nav-stats:hover div {
+  background-image: url('../images/icons/bar-chart-2-plum.svg');
+  transition: background-image 500ms;
+}
 
-.nav-min div {background-image: url('../images/icons/minus.svg'); transition: background-image 500ms;}
-.nav-min:hover div {background-image: url('../images/icons/minus-plum.svg'); transition: background-image 500ms;}
+.nav-settings div {
+  background-image: url('../images/icons/settings.svg');
+  transition: background-image 500ms;
+}
 
-.nav-close div {background-image: url('../images/icons/x.svg'); transition: background-image 500ms;}
-.nav-close:hover div {background-image: url('../images/icons/x-plum.svg');transition: background-image 500ms;}
+.nav-settings:hover div {
+  background-image: url('../images/icons/settings-plum.svg');
+  transition: background-image 500ms;
+}
+
+.nav-min div {
+  background-image: url('../images/icons/minus.svg');
+  transition: background-image 500ms;
+}
+
+.nav-min:hover div {
+  background-image: url('../images/icons/minus-plum.svg');
+  transition: background-image 500ms;
+}
+
+.nav-close div {
+  background-image: url('../images/icons/x.svg');
+  transition: background-image 500ms;
+}
+
+.nav-close:hover div {
+  background-image: url('../images/icons/x-plum.svg');
+  transition: background-image 500ms;
+}
 
 /* organize menu within wrapper */
 .nav-wrapper {
-    grid-area: navwrapper;
-    display: grid;
-    grid-template-columns: 50px 50px 50px 1fr 50px 50px 50px;
-    grid-template-rows: 50px;
-    grid-template-areas: "navFiles navStats navSettings navDrag navReload navMin navClose";
-    position: sticky;
-    top: 0;  
+  grid-area: navwrapper;
+  display: grid;
+  grid-template-columns: 50px 50px 50px 1fr 50px 50px;
+  grid-template-rows: 50px;
+  grid-template-areas: "navFiles navStats navSettings navDrag navMin navClose";
+  position: sticky;
+  top: 0;
+}
+
+
+/******************************************************************************
+ * 
+ * styling basic text elements
+ * 
+ *****************************************************************************/
+.h1 {
+  grid-area: h1;
+  border: 1px solid red;
+}
+
+.h1-wrapper {
+  display: grid;
+  ;
+  grid-template-columns: 1fr minmax(500px, 1fr) 1fr;
+  grid-template-areas: ". h1 .";
+  text-align: center;
+
+}
+
+/* h1 header with even spacing  */
+.main-h1-even {
+  grid-area: main-h1-even;
+  display: grid;
+  padding: 1em 0;
+  text-align: center;
+  font-size: 2em;
+  grid-column: 2 / 3;
+}
+
+/* h1 header with extra space on top */
+.main-h1-top {
+  grid-area: main-h1-top;
+  display: grid;
+  padding: 1em .5em .25em .5em;
+  text-align: center;
+  font-size: 2em;
+  grid-column: 2 / 3;
+}
+
+/* h1 header with extra space on top */
+.main-h3-top {
+  grid-area: main-h3-top;
+  display: grid;
+  padding: 1em .5em .25em .5em;
+  text-align: center;
+  font-size: 1.25em;
+  grid-column: 2 / 3;
+}
+
+/* smaller padding all around 
+  good for sub paragraphs and descriptions
+  below h1-top*/
+.main-p-even {
+  grid-area: main-p-even;
+  display: grid;
+  padding: .5em .5em;
+  text-align: center;
+  font-size: 1em;
+  grid-column: 2 / 3;
+}
+
+.main-p-even-small {
+  grid-area: main-p-even;
+  display: grid;
+  padding: .5em .5em;
+  text-align: center;
+  font-size: .75em;
+  grid-column: 2 / 3;
+
+}
+
+/* larger padding on top to match h1 
+  good for first paragraph*/
+.main-p-top {
+  grid-area: main-top;
+  display: grid;
+  padding: 2em .5em .5em .5em;
+  text-align: center;
+  font-size: 1em;
+  grid-column: 2 / 3;
+}
+
+.main-p-bot {
+  grid-area: main-top;
+  display: grid;
+  padding: .5em .5em 2em .5em;
+  text-align: center;
+  font-size: 1em;
+  grid-column: 2 / 3;
+}
+
+.main-p-link {
+  text-decoration: none;
+  color: var(--highlight);
+}
+
+.main-p-link:hover {
+  color: black;
+}
+
+/* create a simple dividing line*/
+.main-line {
+  grid-area: main-line;
+  display: grid;
+  grid-column: 2 / 3;
+  border-bottom: 1px solid var(--plum-color);
+}
+
+/* create a simple space horizontally */
+.main-spacer {
+  grid-area: main-spacer;
+  display: grid;
+  padding: 2em 0;
+  grid-column: 2 / 3;
+
+}
+
+/* container/wrapper for main elements */
+.container-main {
+  grid-area: cont-main;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 45ch) 1fr;
+
+}
+
+/* container/wrapper for main elements with wide setting */
+.container-main-wide {
+  grid-area: cont-main;
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 45ch) 1fr;
+}
+
+
+/******************************************************************************
+ * 
+ * title bar elements
+ * 
+ *****************************************************************************/
+.title-name {
+  display: grid;
+  grid-area: titleName;
+  border-right: 1px solid darkgray;
+
+}
+
+.title-dob {
+  display: grid;
+  grid-area: titleDob;
+  border-right: 1px solid darkgray;
+
+  margin: 0 0 0 10px;
+
+}
+
+.title-phone {
+  display: grid;
+  grid-area: titlePhone;
+  margin: 0 0 0 10px;
+
+}
+
+.title-bar {
+  display: grid;
+  color: var(--grayLight);
+  grid-template-columns: 300px 150px auto;
+  grid-template-areas: " titleName titleDob titlePhone";
+  margin: 0 0 0 .5em;
+
+  /* gap: 10px; */
+
+}
+
+/******************************************************************************
+ * 
+ * client display elements
+ * 
+ *****************************************************************************/
+.name {
+  grid-area: name;
+  width: fit-content;
+}
+
+.name:hover {
+  color: var(--alt);
+  cursor: pointer;
+}
+
+.dob {
+  grid-area: dob;
+  width: fit-content;
+}
+
+.dob:hover {
+  cursor: grab;
+}
+
+.phone {
+  grid-area: phone;
+  width: fit-content;
+}
+
+.claims {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  color: gray;
+}
+
+.claims div {
+  display: grid;
+  width: fit-content;
+}
+
+.claims div:hover {
+  color: var(--alt);
+  cursor: pointer;
+}
+
+.dois {
+  display: grid;
+  color: gray;
+}
+
+/* claims containr hold claim details */
+.claims-container {
+  grid-area: claimCont;
+  display: grid;
+  padding-top: .25em;
+  grid-template-columns: 300px 150px;
+}
+
+/* holds full client card */
+.client-wrapper {
+  display: grid;
+  padding: .5em;
+  grid-template-columns: 300px 150px 150px;
+  grid-template-areas: "name dob phone" "claimCont claimCont claimCont";
+  font-size: small;
+}
+
+.client-card-container {
+  min-height: calc(100vh - 100px);
+  /* min-height: 100vh; */
+}
+
+/* for hiding elements */
+.hide {
+  display: none;
+}
+
+/******************************************************************************
+ * 
+ * search elements
+ * 
+ *****************************************************************************/
+.search-term {
+  text-align: right;
+  padding-right: 20px;
+  /* width: 500px; */
+  color: var(--plum-color);
+  position: sticky;
+  top: 50px
+}
+
+.search-notes {
+  padding: .5em;
+  color: var(--plum-color);
+}
+
+/******************************************************************************
+ * 
+ * footer section
+ * 
+ *****************************************************************************/
+.client-count-total {
+  display: grid;
+  grid-area: clientCountTotal;
+  justify-items: left;
+
+}
+
+.client-count-yahir {
+  display: grid;
+  grid-area: clientCountYahir;
+  justify-items: right;
+}
+
+.client-count-amber {
+  display: grid;
+  grid-area: clientCountAmber;
+  justify-items: right;
+}
+
+.client-count-shirley {
+  display: grid;
+  grid-area: clientCountShirley;
+  justify-items: right;
+
+}
+
+.client-count-unassigned {
+  display: grid;
+  grid-area: clientCountUnassigned;
+  justify-items: right;
+}
+
+.footer-wrapper {
+  display: grid;
+  background-color: var(--light-green-color);
+  grid-template-columns: 100px 1fr 100px 100px 100px 100px;
+  grid-template-areas: "clientCountTotal . clientCountUnassigned clientCountYahir clientCountAmber clientCountShirley ";
+  grid-auto-rows: 25px;
+  position: sticky;
+  bottom: 0;
+  font-size: .75em;
+  align-items: center;
+  padding: 0 10px;
 }
