@@ -410,6 +410,7 @@ if I am able to get the path i believe i can update using fill*/
 .search-notes {
   padding: .5em;
   color: var(--plum-color);
+  text-align: center;
 }
 
 /******************************************************************************

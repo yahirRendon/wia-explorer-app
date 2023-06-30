@@ -1,5 +1,6 @@
-// catalina concepction 2 claism no claim folders
-// ferenc boda claim folder and sitch name don't match
+/**
+ * front end / renderer
+ */
 
 // navigation elements
 const filesButton = document.querySelector('.nav-files');
@@ -58,7 +59,6 @@ const getAllClientData = async () => {
     data = await window.api.getData();
     // generatee client cards based on html template design
     setClientCards();
-
     // count clients for individual representatives
     clientCount();
 }
@@ -115,9 +115,8 @@ closeAppButton.addEventListener('click', function () {
 function setClientCards() {
     // array does not exist, is not an array, or is empty
     if (!Array.isArray(data) || !data.length) {
-        
         searchNotes.classList.remove("hide");
-        searchNotes.innerHTML = "No clients found within current folder path.<br>Update path in settings."
+        searchNotes.innerHTML = "No clients found within folder:<br>" + pathClientFolder + "<br><br>Update path in settings." 
     }
     clients = data.map(client => {
         // get template elements
@@ -164,6 +163,13 @@ function setClientCards() {
                     clientFolderClaim += '/' + client.claims[i][0];
                 }
 
+                if(client.status == "dead") {
+                    clientFolder = pathClientFolder + '/%23Dead/' + client.name;
+                    clientFolderClaim = clientFolder;
+                    if (client.claims.length > 1) {
+                        clientFolderClaim += '/' + client.claims[i][0];
+                    }
+                }
                 window.api.openFolder([clientFolderClaim, clientFolder]);
             });
 
@@ -185,6 +191,11 @@ function setClientCards() {
             expandable = false;
             let pathToSitch = pathClientFolder + '/' + client.name + '/' + client.name + '.docx';
             let pathToFolder = pathClientFolder + '/' + client.name;
+            if(client.status == 'dead') {
+                pathToSitch = pathClientFolder + '/#Dead/' + client.name + '/' + client.name + '.docx';
+                pathToFolder = pathClientFolder + '/%23Dead/' + client.name;
+            }
+
             window.api.openSitch([pathToSitch, pathToFolder]);
         });
 
@@ -223,6 +234,13 @@ function setClientCards() {
             expandable = true;
         });
 
+        /**
+         * only show open claims
+         */
+        if(client.status == "dead") {
+            card.classList.add("hide")
+        }
+
         // update card
         clientCardContainer.append(card)
 
@@ -234,6 +252,7 @@ function setClientCards() {
             phone: client.phone,
             claims: client.claims,
             rep: client.rep,
+            status: client.status,
             element: card
         }
     });
@@ -284,7 +303,6 @@ window.addEventListener("keydown", function (e) {
     // update search text keyword
     else if (value.length === 1) {
         searchInput += value;
-
     }
 
     searchTerm.innerHTML = searchInput;
@@ -302,6 +320,11 @@ window.addEventListener("keydown", function (e) {
         // if within search toggle visibility
         const isVisible = client.name.toLowerCase().includes(searchInput) || searchableTags.toLocaleLowerCase().includes(searchInput)
         client.element.classList.toggle("hide", !isVisible)
+
+        // if not searching hide dead files. The appear during search
+        if(searchInput.length == 0 && client.status == "dead") {
+            client.element.classList.add("hide")
+        }
 
         // generate visible array and update text color
         if (isVisible) {
@@ -331,17 +354,26 @@ window.addEventListener("keydown", function (e) {
             searchNotes.innerHTML = "No results for: " + searchInput;
         }
 
-
         if (enterPressed) {
             if (e.shiftKey) {
                 // open folder
                 let pathToFolder = pathClientFolder + '/' + clients[indexClient].name;
-                window.api.openFolder([pathToFolder]);
+                let pathToHome = pathClientFolder;
+                if(clients[indexClient].status == "dead") {      
+                    pathToFolder = pathClientFolder + '/%23Dead/' + clients[indexClient].name;
+                    pathToHome = pathClientFolder + + '/%23Dead/';
+                }
+                window.api.openFolder([pathToFolder, pathToHome]);
 
+    
             } else {
                 // try to open sitch if not open folder
                 let pathToSitch = pathClientFolder + '/' + clients[indexClient].name + '/' + clients[indexClient].name + '.docx';
                 let pathToFolder = pathClientFolder + '/' + clients[indexClient].name;
+                if(clients[indexClient].status == "dead") {   
+                    pathToSitch = pathClientFolder + '/#Dead/' + clients[indexClient].name + '/' + clients[indexClient].name + '.docx';
+                    pathToFolder = pathClientFolder + '/%23Dead/' + clients[indexClient].name;
+                }
                 window.api.openSitch([pathToSitch, pathToFolder]);
             }
         }
@@ -387,12 +419,12 @@ function clientCount() {
     });
 
     // set client numbers in DOM
-    numTotalClients = numAmberClients + numClientsYahir + numShirleyClients + numUnassignedClients;
-    clientCountTotal.innerHTML = "total: " + numTotalClients;
-    clientCountYahir.innerHTML = "yahir: " + numClientsYahir;
+    numTotalClients = numAmberClients + numYahirClients + numShirleyClients + numUnassignedClients;
     clientCountAmber.innerHTML = "amber: " + numAmberClients;
     clientCountShirley.innerHTML = "shirley: " + numShirleyClients;
+    clientCountTotal.innerHTML = "total: " + numTotalClients;
     clientCountUnassigned.innerHTML = "unassigned: " + numUnassignedClients
+    clientCountYahir.innerHTML = "yahir: " + numYahirClients;
 
     // set text to italics when searching and normal when not
     if (searchInput.length > 0) {
