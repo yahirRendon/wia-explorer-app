@@ -5,14 +5,18 @@ const path = require('path');
 const { app, BrowserWindow, Menu, ipcMain, ipcRenderer } = require('electron');
 const fs = require('fs');
 const { shell } = require('electron') // deconstructing assignment
+const os = require('os');
 
 const isDev = process.env.NODE_ENV !== 'development';
 const isMac = process.platform === 'darwin'; // win32, linux
 let mainWindow;
 let statsWindow;
 
-let pathClientFolder = "C:/Users/yahir/Dropbox/WIA/Public/WIA L&I Intakes/TERI'S L&I CLIENTS"; // default path to client folder
-// pathClientFolder = "C:/Users/yahir/OneDrive/Desktop/WIA-Clients" // for dummy testing data location
+// path to client folder
+var regex = /\\/g;
+var userHomeDirectory = os.homedir().replace(regex, '/');
+let pathClientFolder = userHomeDirectory + "/Dropbox/WIA/Public/WIA L&I Intakes/TERI'S L&I CLIENTS"; // default path to client folder
+pathClientFolder = userHomeDirectory + "/OneDrive/Desktop/WIA-Clients"; // for testing and dummy data
 
 /**
  * create stats window not currently being used but this is how you'd do it.
