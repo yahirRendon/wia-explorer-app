@@ -11,10 +11,31 @@
   terminal command: i electron
 </p>
 
-## Preview
+## Preview File Explorer
 <p align="center">
-  <img width="700" align="center" src="" alt="ui file explorer main"/>
+  <img width="600" 
+    alt="ui file explorer main"
+    align="center" 
+    src="https://github.com/yahirRendon/wia-explorer-app/blob/main/renderer/images/ui-app/wia_file_explorer.jpg"/>
+</p>
+<p align="center">
+  <img width="400" 
+    alt="ui file explorer expanded"
+    align="center" 
+    src="https://github.com/yahirRendon/wia-explorer-app/blob/main/renderer/images/ui-app/wia_file_explorer-expanded.jpg"/>
+  <img width="400" 
+    alt="ui file explorer search"
+    align="center" 
+    src="https://github.com/yahirRendon/wia-explorer-app/blob/main/renderer/images/ui-app/wia_file_explorer-search.jpg"/>
+</p>
 
+## Preview Settings
+<p align="center">
+  <img width="600" 
+    alt="ui settings"
+    align="center" 
+    src="https://github.com/yahirRendon/wia-explorer-app/blob/main/renderer/images/ui-app/wia_settings.jpg"/>
+</p>
 
 ##  Instructions
 <p>
